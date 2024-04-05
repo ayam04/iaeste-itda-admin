@@ -35,7 +35,7 @@ def main():
                 email = row["Email ID"]
                 add_to_firebase(email, name)
 
-            conn.update(worksheet="Sheet3", data=updated_members1)
+            conn.update(worksheet="Test", data=updated_members1)
             st.success("Database Updated Successfully")
     
     st.subheader("Outstations Members Sheet")
