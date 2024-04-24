@@ -1,15 +1,13 @@
 import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
-import re
 from streamlit_gsheets import GSheetsConnection
 
-def init():
-    cred = credentials.Certificate("firebase_key.json")
-    firebase_admin.initialize_app(cred)
+cred = credentials.Certificate("firebase_key.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 def add_to_firebase(email_id,name):
-    db = firestore.client()
     db_collection = db.collection("user")
     
     query = db_collection.order_by('_id', direction=firestore.Query.DESCENDING).limit(2)

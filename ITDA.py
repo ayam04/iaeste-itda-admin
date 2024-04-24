@@ -3,7 +3,6 @@ from streamlit_gsheets import GSheetsConnection
 from functions import *
 
 def main():
-    init()
     conn = st.connection("gsheets", type=GSheetsConnection)
 
     data1 = conn.read(worksheet="Sheet1", ttl=30)
