@@ -5,8 +5,8 @@ from functions import *
 def main():
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data1 = conn.read(worksheet="Sheet1", ttl=30)
-    data2 = conn.read(worksheet="Sheet2", ttl=30)
+    data1 = conn.read(worksheet="Instation-memberships", ttl=30)
+    data2 = conn.read(worksheet="Outstation", ttl=30)
     
     st.subheader("MUJ Members Sheet")
     with st.spinner("Loading Data"):
@@ -14,7 +14,7 @@ def main():
 
     query1 = '''
     SELECT "Name","Reg No.","Email ID"
-    FROM Sheet1
+    FROM "Instation-memberships"
     WHERE "PAYMENT(FINANCE)" is NOT NULL
     AND "PORTAL(ITDA)" is NULL;
     '''
@@ -43,7 +43,7 @@ def main():
 
     query2 = '''
     SELECT "Name", "Email", "Contact"
-    FROM "Sheet2"
+    FROM "Outstation"
     WHERE "PAYMENT(FINANCE)" is NOT NULL
     AND "PORTAL(ITDA)" is NULL;
     '''
